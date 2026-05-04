@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Expense Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="menu-icon" id="menuBtn">☰</div>
+    <h3 id="welcomeText">Welcome! </h3>
+    <button id="darkToggle">🌙</button>
+</header>
+
+<!-- EMPLOYEE PROFILE -->
+<div class="side-panel" id="sidePanel">
+    <h2>Employee Profile</h2>
+<br>
+    <input type="text" id="companyInput" placeholder="Employee Name">
+    <input type="text" id="companyOwner" placeholder="Work Place">
+    <input type="text" id="companyEmail" placeholder="Email">
+
+    <input type="file" id="profileUpload">
+
+    <button id="saveCompany">Save</button>
+    <button id="editProfile">Edit</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- LEFT CONTENT -->
+    <div class="container">
+
+        <!-- TITLE -->
+        <h1>💰 Employee Expense Tracker</h1>
+        <p class="quote">"Track every expense. Manage smarter."</p>
+
+        <!-- PROFILE CARD -->
+        <div class="top-row">
+
+            <div class="profile-card">
+                 <img id="profilePic">
+                 <h3 id="profileName">Employee Name</h3>
+            </div>
+
+            <!-- BALANCE, INCOME, EXPENSE BOXES -->
+            <div class="summary-group">
+                <div class="summary-box">
+                    <h3>Balance</h3>
+                    <h2 id="balance">Rs.0</h2>
+                </div>
+
+                <div class="summary-box income">
+                    <h4>Income</h4>
+                    <p id="money-plus">Rs.0</p>
+                </div>
+
+                <div class="summary-box expense">
+                    <h4>Expense</h4>
+                    <p id="money-minus">Rs.0</p>
+                </div>
+            </div>
+
+        </div>
+<br>
+        <!-- ADD TRANSACTION -->
+        <h3 class="table-title"> 🖊️Add Transaction</h3>
+
+        <form id="form">
+            <input type="text" id="text" placeholder="Description" required>
+            <input type="number" id="amount" placeholder="Amount (+ / -)" required>
+
+            <select id="category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Salary">Salary</option>
+                <option value="Office">Office</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input type="text" id="customCategory" placeholder="Enter category" style="display:none;">
+
+            <!-- ADD RECORD , CLEAR BUTTON -->
+            <div class="btn-group">
+                <button type="submit">Add Record</button>
+                <button type="button" id="clearForm">Clear</button>
+            </div>
+        </form>
+
+        <!-- TRANSACTION HISTORY -->
+        <h3 class="table-title">📋 Transaction History</h3>
+
+        <div class="filter-row">
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search...">
+                <span class="search-icon" id="searchIcon">🔍</span>
+            </div>
+
+            <select id="filterCategory">
+                <option value="All">All Categories</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Salary">Salary</option>
+                <option value="Office">Office</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <!-- HISTORY TABLE -->
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+
+        <div class="actions">
+            <button id="undoBtn">Undo</button>
+            <button id="clearBtn">Clear All</button>
+        </div>
+
+    </div>
+
+    <!-- ADD PIE CHART -->
+    <div class="graph-container">
+
+        <h3 class="table-title">📊 Monthly Financial Overview</h3>
+
+        <canvas id="chart" width="300" height="300"></canvas>
+
+        <!-- PIE CHART DETAILS -->
+        <div class="chart-details">
+            <p id="chartIncome">Income: Rs.0 (0%)</p>
+            <p id="chartExpense">Expense: Rs.0 (0%)</p>
+            <p id="chartBalance">Balance: Rs.0</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RECORD ADDED SUCCESS MESSAGE -->
+<div id="toast" class="toast">✅ Record Added Successfully</div>
+
+<!-- SCREEN SHOW MODAL -->
+<div id="deleteModal" class="modal">
+  <div class="modal-box">
+    <h2>Confirm</h2>
+    <p>Are you sure?</p>
+    <button id="confirmDelete">Yes</button>
+    <button id="cancelDelete">Cancel</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-top">
+        <p id="p1">💰 Employee Expense Tracker © 2026</p>
+        <p id="p2">Track smart. Save more.</p>
+    </div>
+    <p id="footerUser">👤 User: -</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
